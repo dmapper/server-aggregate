@@ -24,7 +24,7 @@ On the server:
 const serverAggregate = require('server-aggregate')
 serverAggregate(backend)  
 
-// function addServerQuery accept
+// function addAggregate accept
 // 'collection' - collection name
 // 'queryName'  - name of query
 // 'cb' - function that accepts 'params' and 'shareRequest'
@@ -46,7 +46,7 @@ backend.addAggregate('items', 'main', async (params, shareRequest) => {
 Using queries (on the client):
 
 ```js
-  // function serverQuery accepts 3 arguments:
+  // function aggregateQuery accepts 3 arguments:
   // 'collection' - collection name (should match one from addServerQuery)
   // 'queryName' - name of query (should match one from addServerQuery)
   // 'params' - object with query-params
@@ -64,9 +64,6 @@ Using queries (on the client):
 Alternative approach (using regular model.query)
 
 ```js
-  // function serverQuery accepts 3 arguments:
-  // 'collection' - collection name (should match one from addServerQuery)
-  
   const query = model.query('items', {
     $aggregationName: 'main',
     $params: {
